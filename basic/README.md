@@ -1,4 +1,4 @@
-# 01 — Bash Basics
+# 01 Bash Basics
 
 This section contains my first Bash exercises.
 
