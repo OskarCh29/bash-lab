@@ -9,9 +9,9 @@ echo ===============
 file_info () {
   title
   echo File: "$1"
-  echo Path: "$(pwd)"
+  echo Path: "$(realpath "$1")"
   echo Type: "$(file "$1" -b)"
-  echo Size: "$(wc -c < "$1")"
+  echo Size: "$(wc -c < "$1") bytes"
   echo Lines: "$(wc -l < "$1")"
   echo Words: "$(wc -w < "$1")"
   echo Characters: "$(wc -m < "$1")"
@@ -21,7 +21,10 @@ file_info () {
 }
 
 validate_options () {
-  if [ "$1" = "-v" ]; then
+  if [ "$1" -ne 1 ]; then
+    echo "Invalid parameter input"
+    exit 1
+  elif [ "$2" = "-v" ]; then
     echo "[INFO] version: 1.0.0"
     exit 0
     fi
@@ -47,12 +50,12 @@ validate_file () {
 input=$#
 error_code=1
 file=$1
-validate_options "$1"
-validate_input $input "[INFO] Usage: $(basename "$0") <file>" 2
+validate_options "$input" "$1"
+validate_input "$input" "[INFO] Usage: $(basename "$0") <file>" 2
 echo "Checking file..."
 sleep 2
-validate_file "$file" $error_code
-file_info "$file" $error_code
+validate_file "$file" "$error_code"
+file_info "$file"
 
 
 
