@@ -60,6 +60,22 @@ def main():
                 errors.append(f"{rel}: missing heading {heading}")
         if not (path.parent / "materials" / "README.md").exists():
             errors.append(f"{rel}: missing materials/README.md")
+    # Check relative Markdown links in the course so referenced fixture files cannot silently go missing.
+    for markdown in sorted((ROOT / "course").rglob("*.md")):
+        text = markdown.read_text(encoding="utf-8")
+        for target in re.findall(r"(?<!!)\\[[^\\]]*\\]\\(([^)]+)\\)", text):
+            target = target.strip().split(" ", 1)[0]
+            if not target or target.startswith(("#", "http://", "https://", "mailto:", "tel:", "data:")):
+                continue
+            local_target = target.split("#", 1)[0].split("?", 1)[0]
+            if not local_target:
+                continue
+            if local_target.startswith("/"):
+                resolved = ROOT / local_target.lstrip("/")
+            else:
+                resolved = markdown.parent / local_target
+            if not resolved.exists():
+                errors.append(f"{markdown.relative_to(ROOT)}: broken local link '{target}'")
     all_ids = {meta.get("id") for meta in metadata.values()}
     for path, meta in metadata.items():
         for prereq in re.findall(r"T-\d{4}", meta.get("requires", "")):
