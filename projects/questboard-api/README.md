@@ -1,14 +1,5 @@
-# QuestBoard API — wspólny projekt kursowy
+# QuestBoard — wspólne aplikacje kursowe
 
-Kod aplikacji powstaje stopniowo podczas questów Java i Spring Boot. Nie dołączono kompletnej aplikacji ani klucza odpowiedzi.
+Kurs wykorzystuje gotowe task-api i profile-api w course/fixtures/apps/. Są napisane w standardowym JDK i komunikują się po HTTP. Zadania skupiają się na uruchamianiu procesów, diagnozowaniu, Docker, networking, CI, metrykach i wdrożeniach, a nie na implementowaniu frameworka webowego.
 
-## Docelowy zakres
-- REST API do zarządzania zadaniami;
-- walidacja i spójne błędy;
-- PostgreSQL;
-- testy jednostkowe i integracyjne;
-- health endpoint i metryki;
-- Dockerfile, Compose i CI;
-- lokalne wdrożenie Kubernetes, Helm i Argo CD.
-
-Wprowadzaj funkcjonalność wymaganą przez aktywny quest. Nie commituj sekretów ani plików generowanych przez build.
+Kopiuj źródła do własnych katalogów rozwiązania. Nie zapisuj sekretów ani plików generowanych przez build.

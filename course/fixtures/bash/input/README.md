@@ -1,0 +1,1 @@
+Fixture do testów ścieżek.

@@ -4,53 +4,45 @@ title: "Znajdź wskazówkę w logach"
 module: "00-start-here"
 level: 1
 duration_minutes: 25
-requires: ["T-0002"]
-deliverable: "artefakt ćwiczeniowy"
+requires: ["T-0001"]
+deliverable: "diagnoza-logów"
 ---
 
 # T-0003 — Znajdź wskazówkę w logach
 
-> Moduł: Start tutaj — terminal i diagnoza · Poziom 1 · 25 min
-
 ## Misja
-
-Symulowana aplikacja kończy się błędem. Oddziel pierwotny objaw od skutków awarii.
+task-api odpowiada na healthcheck, ale żądanie zależne zwraca 502. Ustal, co mówią logi, zanim zrestartujesz usługę.
 
 ## Cel nauki
+Wyciągać dowody z logów i oddzielać fakt od hipotezy.
 
-Ćwicz grep, tail, wc oraz rozdzielanie faktów od hipotez.
+## Materiały
+- [Materiały lekcji](materials/README.md)
+- [Log aplikacji](../../../fixtures/linux/logs/app.log)
+- [Log dostępu](../../../fixtures/linux/logs/access.log)
+- Uzupełnij result.md.
 
 ## Zadania
-
-1. Utwórz przykładowy log z INFO WARN ERROR
-2. Odfiltruj istotne linie i kontekst
-3. Zapisz fakty, hipotezę i następny test
+1. Znajdź wpisy ERROR przez terminal.
+2. Policz wystąpienia ERROR i statusy HTTP.
+3. Znajdź najwcześniejszy wpis, który może wyjaśniać 502.
+4. Zapisz, co jest faktem, co hipotezą i jaki test wykonać dalej.
 
 ## Kryteria zaliczenia
-
-- Wskazujesz komunikat z kontekstem
-- Oddzielasz fakt od hipotezy
-- Proponujesz test potwierdzający
+- Używasz co najmniej dwóch poleceń filtrujących.
+- Podajesz wyniki z terminala.
+- Nie uznajesz pierwszego błędu za pewną przyczynę.
 
 ## Weryfikacja
+Powtórz raport na access.log i opisz, co wnosi drugi log.
 
-Uzyskaj tę samą linię dwoma filtrami
-
-## Podpowiedzi — otwieraj stopniowo
-
-1. **Mała wskazówka:** Filtruj ERROR, a potem sprawdź sąsiednie linie
-2. **Kierunek:** Ostatni komunikat nie zawsze wyjaśnia pierwotną przyczynę
-3. **Gdy nadal utkniesz:** pokaż AI konkretny wynik z terminala; poproś o wyjaśnienie i jeden mały eksperyment, nie gotową odpowiedź.
+## Podpowiedzi
+1. **Mała wskazówka:** zacznij od grep -n ERROR.
+2. **Kierunek:** ostatnia kolumna access.log zawiera status HTTP.
+3. **Gdy utkniesz:** pokaż AI pipeline i wynik, poproś o wyjaśnienie.
 
 ## Raport po zadaniu
-
-Zapisz w prywatnym Obsidianie:
-- Co wykonałem samodzielnie?
-- Gdzie potrzebowałem pomocy?
-- Jaki błąd popełniłem i co było przyczyną?
-- Czy umiem odtworzyć rozwiązanie bez kopiowania?
-- Co powinienem powtórzyć?
+Zapisz fakty, hipotezę i następny eksperyment w prywatnym Obsidianie.
 
 ## Porządkowanie
-
-Usuń tylko swój przykładowy log
+Nie edytuj źródłowych logów fixture.

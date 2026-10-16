@@ -1,28 +1,28 @@
 # Roadmapa kursu
 
-| Etap | Moduł | Questy | Bramka umiejętności |
+| Etap | Moduł | Questów | Bramka umiejętności |
 |---:|---|---:|---|
-| 01 | [Start tutaj — terminal i diagnoza](lessons/00-start-here/) | 4 | Sprawne rozpoznanie projektu i diagnoza bez zgadywania |
-| 02 | [Git — bezpieczna praca ze zmianami](lessons/01-git/) | 4 | Bezpieczny staging commit branch i merge |
-| 03 | [Linux — pliki, procesy i sieć](lessons/02-linux/) | 4 | Podstawowe uprawnienia procesy i sieć |
-| 04 | [Bash — automatyzacja](lessons/03-bash/) | 4 | Skrypt CLI z walidacją i przewidywalnym kodem wyjścia |
-| 05 | [Java — fundamenty języka](lessons/04-java/) | 4 | Samodzielny program Java z kolekcjami i obsługą błędów |
-| 06 | [Java — Maven i testy](lessons/05-java-testing-build/) | 4 | Build Maven i testy wykrywające regresję |
-| 07 | [Spring Boot — API i dane](lessons/06-spring-boot/) | 4 | API HTTP z walidacją bazą i health endpointem |
-| 08 | [Docker — od obrazu do aplikacji](lessons/07-docker-compose/) | 5 | Java i PostgreSQL uruchamiane powtarzalnie przez Compose |
-| 09 | [CI/CD — automatyczne sprawdzanie](lessons/08-ci-cd/) | 3 | CI automatycznie blokuje błędny build |
-| 10 | [Observability — Prometheus i Grafana](lessons/09-observability/) | 4 | Metryki odpowiadają na pytania operacyjne |
-| 11 | [Kubernetes — wdrożenie i diagnoza](lessons/10-kubernetes/) | 5 | Wdrożenie diagnoza i przywrócenie aplikacji lokalnie |
-| 12 | [Helm i GitOps — Argo CD](lessons/11-helm-gitops/) | 4 | Manifesty parametryzowane i synchronizowane przez GitOps |
-| 13 | [Capstone — od kodu do klastra](lessons/12-capstone/) | 3 | Umiejętność odtworzenia przepływu i opisania incydentu |
+| 01 | [Start tutaj — terminal i diagnoza](lessons/00-start-here/) | 4 | Wyciągasz fakty z terminala i diagnozujesz bez zgadywania. |
+| 02 | [Git — bezpieczna praca ze zmianami](lessons/01-git/) | 10 | Używasz status, diff, log, stash, restore/revert, branch, merge, rebase i bisect. |
+| 03 | [Linux — pliki, procesy i sieć](lessons/02-linux/) | 7 | Zbierasz metadane, diagnozujesz procesy i analizujesz logi. |
+| 04 | [Bash — automatyzacja](lessons/03-bash/) | 7 | Piszesz skrypty CLI z walidacją, backupem i healthcheckiem. |
+| 05 | [Aplikacje przykładowe — Java jako materiał](lessons/04-app-fixtures/) | 4 | Uruchamiasz gotową Javę, rozumiesz proces port i konfigurację. |
+| 06 | [HTTP — testowanie usług](lessons/05-http-services/) | 4 | Diagnozujesz kontrakt HTTP, statusy, błędy połączenia i timeouty. |
+| 07 | [Integracja dwóch usług REST](lessons/06-service-integration/) | 4 | Uruchamiasz i diagnozujesz dwie zależne usługi REST. |
+| 08 | [Docker — od obrazu do aplikacji](lessons/07-docker-compose/) | 9 | Budujesz obrazy i rozumiesz DNS porty wolumeny i healthchecki. |
+| 09 | [CI/CD — automatyczne sprawdzanie](lessons/08-ci-cd/) | 5 | CI weryfikuje zmiany i bezpiecznie obsługuje konfigurację oraz release. |
+| 10 | [Observability — Prometheus i Grafana](lessons/09-observability/) | 6 | Metryki PromQL dashboardy i alerty wspierają diagnozę. |
+| 11 | [Kubernetes — wdrożenie i diagnoza](lessons/10-kubernetes/) | 9 | Wdrażasz na Minikube i diagnozujesz selektory obrazy zasoby i rollout. |
+| 12 | [Helm i GitOps — Argo CD](lessons/11-helm-gitops/) | 6 | Parametryzujesz wdrożenia i naprawiasz synchronizację GitOps. |
+| 13 | [Capstone — od kodu do klastra](lessons/12-capstone/) | 4 | Odtwarzasz środowisko od czystego klona i dokumentujesz incydent. |
 
-## Rozwój QuestBoard
-1. Java i testy.
-2. API Spring Boot oraz PostgreSQL.
-3. Dockerfile i Docker Compose.
-4. GitHub Actions.
-5. Metryki Prometheus i dashboard Grafany.
-6. Deployment, Service, konfiguracja i sondy w Minikube.
-7. Helm oraz GitOps przez Argo CD.
+## Przepływ aplikacji
+1. Poznaj gotowe źródła task-api i profile-api.
+2. Uruchom procesy i testuj je przez curl.
+3. Napisz Dockerfile dla obu usług.
+4. Połącz je przez Compose, service DNS i zmienne środowiskowe.
+5. Dodaj CI, metryki Prometheus i dashboard Grafany.
+6. Wdróż te same usługi do Minikube.
+7. Zarządzaj konfiguracją przez Helm i Argo CD.
 
-Nowy etap zacznij, gdy potrafisz wyjaśnić wynik i powtórzyć podstawową czynność bez kopiowania gotowca. Infrastrukturę ćwicz lokalnie.
+Java/Spring nie są osobnymi przedmiotami — gotowe API służą do zadań operacyjnych.

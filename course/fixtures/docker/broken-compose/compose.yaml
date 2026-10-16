@@ -1,0 +1,11 @@
+services:
+  task-api:
+    image: task-api:training
+    environment:
+      PROFILE_API_URL: http://localhost:8081
+    ports:
+      - "8080:8080"
+  profile-api:
+    image: profile-api:training
+    ports:
+      - "8081:8081"

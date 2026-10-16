@@ -5,52 +5,45 @@ module: "00-start-here"
 level: 1
 duration_minutes: 20
 requires: []
-deliverable: "artefakt ćwiczeniowy"
+deliverable: "wynik-inspekcji"
 ---
 
 # T-0001 — Pierwszy obchód terminala
 
-> Moduł: Start tutaj — terminal i diagnoza · Poziom 1 · 20 min
-
 ## Misja
-
-Rozpoznaj nieznane repozytorium przed zmianą plików.
+Zbadaj fixture bez używania edytora. Znajdź plik ukryty i zbierz metadane poleceniami terminala.
 
 ## Cel nauki
+Poznać podstawowe polecenia inspekcji i rozróżniać odczyt od edycji.
 
-Naucz się pwd, ls, cd i cat oraz odróżniaj odczyt od modyfikacji.
+## Materiały
+- [Materiały lekcji](materials/README.md)
+- [Fixture terminala](../../../fixtures/terminal/)
+- Uzupełnij result.md rzeczywistymi wynikami.
 
 ## Zadania
-
-1. Ustal bieżącą ścieżkę
-2. Wyświetl pliki, również ukryte
-3. Odczytaj README i wróć do root repo
+1. Sprawdź bieżącą ścieżkę przez pwd.
+2. Użyj ls -la, aby znaleźć plik ukryty.
+3. Użyj stat, file i wc do zbadania .hidden-ops-note.txt.
+4. Odczytaj konfigurację terminalem.
+5. Sprawdź git status --short i upewnij się, że fixture nie został zmieniony.
 
 ## Kryteria zaliczenia
-
-- Wyjaśnij rolę poleceń
-- Nie zmieniaj plików podczas rozpoznania
-- Potrafisz wrócić do root repo
+- Wiesz, jak wyświetlić pliki ukryte.
+- Wypełniasz result.md na podstawie komend.
+- Rozróżniasz rozmiar w bajtach, typ pliku i liczbę linii.
+- Nie modyfikujesz źródłowego fixture.
 
 ## Weryfikacja
+Powtórz badanie z pamięci i porównaj wyniki.
 
-Powtórz sekwencję bez kopiowania i zakończ git status
-
-## Podpowiedzi — otwieraj stopniowo
-
-1. **Mała wskazówka:** Najpierw sprawdź pwd
-2. **Kierunek:** ls ma opcje pokazywania plików ukrytych
-3. **Gdy nadal utkniesz:** pokaż AI konkretny wynik z terminala; poproś o wyjaśnienie i jeden mały eksperyment, nie gotową odpowiedź.
+## Podpowiedzi
+1. **Mała wskazówka:** ls -la pokazuje więcej niż zwykłe ls.
+2. **Kierunek:** stat i wc -c odpowiadają na różne pytania.
+3. **Gdy utkniesz:** pokaż AI komendę i jej wynik, nie pytaj od razu o wartość.
 
 ## Raport po zadaniu
-
-Zapisz w prywatnym Obsidianie:
-- Co wykonałem samodzielnie?
-- Gdzie potrzebowałem pomocy?
-- Jaki błąd popełniłem i co było przyczyną?
-- Czy umiem odtworzyć rozwiązanie bez kopiowania?
-- Co powinienem powtórzyć?
+Zapisz w prywatnym Obsidianie, co wykonałeś samodzielnie i co warto powtórzyć.
 
 ## Porządkowanie
-
-Nie dotyczy — tylko odczyt
+Nie dotyczy — zadanie jest tylko do odczytu.

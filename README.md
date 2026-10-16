@@ -1,24 +1,17 @@
-# Bash Lab — praktyczny kurs Java + DevOps
+# Bash Lab — praktyczny kurs DevOps
 
-Repozytorium rozwija się w stronę kursu krótkich questów wykonywanych głównie z terminala: od Linuxa, Bash i Java, po Docker, CI/CD, monitoring, Kubernetes i GitOps.
+Kurs krótkich questów terminalowych. Java jest gotowym materiałem do ćwiczeń procesów, HTTP, Docker, networkingu, CI/CD, monitoringu i Kubernetes.
 
-## Jak zacząć
-1. Otwórz [kurs i roadmapę](course/README.md).
-2. Zacznij od T-0001 i czytaj task.md przed proszeniem AI o pomoc.
-3. solution/ — gdy występuje — jest przestrzenią ucznia, nie gotową odpowiedzią.
-4. Po zadaniu uruchom weryfikację, wyjaśnij wynik i zapisz wniosek w prywatnym Obsidianie.
+## Start
+1. Otwórz course/README.md i course/ROADMAP.md.
+2. Każda lekcja ma task.md i materials/README.md; wybrane zawierają result.md i solution/.
+3. Konflikty Git ćwicz tylko w kopii sandboxa.
+4. Prywatny postęp zapisuj w Obsidianie.
 
-## Zasady
-- Questy trwają zwykle 15–30 minut.
-- AI podpowiada i recenzuje — nie wykonuje całej nauki za Ciebie.
-- Kryteria zaliczenia są ważniejsze niż ilość wygenerowanego kodu.
-- Nie commituj sekretów ani prywatnych danych.
+## Materiały
+- course/fixtures/terminal/ — ukryte pliki i metadane.
+- course/fixtures/git-taskboard/ — źródła do ćwiczeń Git i konfliktu.
+- course/fixtures/apps/ — dwie gotowe usługi REST w czystym JDK.
+- course/fixtures/linux/, bash/, docker/, ci/, observability/, kubernetes/ — dane i startery do diagnozy.
 
-## Struktura
-- course/lessons/ — 52 questy, każdy z osobnym task.md.
-- course/ROADMAP.md i course/QUEST-FORMAT.md — kolejność i standard.
-- projects/questboard-api/ — wspólny projekt rozwijany w toku kursu.
-- scripts/validate-course.py — walidator formatu zadań.
-- basic/ — wcześniejsze skrypty Bash zachowane bez zmian.
-
-To lokalne laboratorium edukacyjne, nie konfiguracja produkcyjna. Infrastrukturę ćwicz w środowisku testowym.
+Nie publikuj sekretów ani prywatnych danych. Wyniki terminala i testy są źródłem prawdy.

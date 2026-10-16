@@ -1,22 +1,18 @@
 # Standard questu
 
-Każdy quest znajduje się pod course/lessons/<moduł>/<numer>-<slug>/task.md.
+Każdy katalog lekcji zawiera:
+- task.md — misję, kroki, kryteria, weryfikację, podpowiedzi, refleksję i sprzątanie;
+- materials/README.md — konkretne fixture i instrukcję użycia;
+- opcjonalnie result.md — raport wypełniany na podstawie wyników terminala;
+- solution/ — przestrzeń ucznia, gdy zadanie wymaga kodu, skryptów, manifestów lub konfiguracji.
 
-## Wymagane elementy
-- Front matter: id, title, module, level, duration_minutes, requires, deliverable.
-- Jedna misja i główny cel nauki.
-- Kroki na 15–30 minut.
-- Mierzalne kryteria akceptacji i weryfikacja przez test, komendę lub rezultat.
-- Stopniowane podpowiedzi, raport z sesji i sposób sprzątania.
-
-## Katalog solution
-Dodawaj go, gdy zadanie wymaga skryptu, kodu, manifestu lub konfiguracji. Zawiera przestrzeń roboczą ucznia — bez gotowej odpowiedzi. Dla zadań czysto rozpoznawczych nie jest wymagany.
-
-## Jakość
-1. Nie dodawaj zadań bez testowalnego kryterium.
-2. Uwzględniaj przypadki brzegowe.
-3. Nie umieszczaj sekretów ani danych osobowych w plikach.
-4. Dla infrastruktury opisz bezpieczne sprzątanie.
-5. Oceniaj rozumienie i samodzielność, nie liczbę promptów.
-6. Gdy wersja narzędzia ma znaczenie, sprawdź dokumentację.
-7. Prywatny postęp trzymaj w Obsidianie.
+## Zasady
+1. Jeden główny cel, zwykle 15–30 minut.
+2. Materiały muszą istnieć i odnosić się do zadania.
+3. Weryfikacja bazuje na testach, terminalu, HTTP albo stanie zasobu.
+4. Podpowiedzi są stopniowane.
+5. Konflikty i destrukcyjne komendy wykonuj w kopii sandboxa.
+6. Sekrety nie trafiają do repozytorium.
+7. Infrastruktura ma bezpieczną instrukcję sprzątania.
+8. Oceniaj rozumienie, nie liczbę promptów.
+9. Java jest materiałem operacyjnym; nie budujemy frameworka, jeśli nie jest to celem.

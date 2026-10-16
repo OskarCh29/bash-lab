@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate metadata and required sections for course quests."""
+"""Validate quest metadata and required materials without third-party packages."""
 from pathlib import Path
 import re
 import sys
@@ -24,7 +24,7 @@ def front_matter(text):
 
 def main():
     tasks = sorted(TASK_ROOT.rglob("task.md")) if TASK_ROOT.exists() else []
-    errors, seen = [], set()
+    errors, seen, metadata = [], set(), {}
     if not tasks:
         errors.append("No task.md files found.")
     for path in tasks:
@@ -33,8 +33,9 @@ def main():
         if meta is None:
             errors.append(f"{rel}: missing/malformed front matter")
             continue
+        metadata[path] = meta
         for field in FIELDS:
-            if not meta.get(field):
+            if field not in meta or meta[field] == "":
                 errors.append(f"{rel}: missing field {field}")
         qid = meta.get("id", "")
         if not re.fullmatch(r"T-\d{4}", qid):
@@ -57,12 +58,21 @@ def main():
         for heading in HEADINGS:
             if heading not in text:
                 errors.append(f"{rel}: missing heading {heading}")
+        if not (path.parent / "materials" / "README.md").exists():
+            errors.append(f"{rel}: missing materials/README.md")
+    all_ids = {meta.get("id") for meta in metadata.values()}
+    for path, meta in metadata.items():
+        for prereq in re.findall(r"T-\d{4}", meta.get("requires", "")):
+            if prereq not in all_ids:
+                errors.append(f"{path.relative_to(ROOT)}: unknown prerequisite {prereq}")
+            if prereq == meta.get("id"):
+                errors.append(f"{path.relative_to(ROOT)}: quest cannot require itself")
     if errors:
         print("Course validation failed:")
         for error in errors:
             print("- " + error)
         return 1
-    print(f"OK: {len(tasks)} quests validated; IDs unique and required sections present.")
+    print(f"OK: {len(tasks)} quests validated; materials exist and IDs/prerequisites are valid.")
     return 0
 
 if __name__ == "__main__":

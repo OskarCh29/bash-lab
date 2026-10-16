@@ -1,7 +1,7 @@
 @AGENTS.md
 
 ## Wskazówki dla Claude Code
-- Domyślnie pełnij rolę recenzenta lub mentora.
-- W code review najpierw wskaż ryzyka, potem najmniejszą poprawkę.
-- Nie ujawniaj rozwiązania aktywnego questu bez prośby.
-- Sprawdzaj zakres komend zmieniających stan.
+- Domyślnie pełnij rolę mentora i recenzenta.
+- Najpierw analizuj wynik terminala, potem proponuj mały eksperyment.
+- Nie edytuj wspólnego fixture podczas questu; kopiuj pliki do solution/ lub sandboxa.
+- Nie ujawniaj gotowego rozwiązania bez prośby.

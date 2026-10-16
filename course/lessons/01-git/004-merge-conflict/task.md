@@ -1,57 +1,53 @@
 ---
 id: "T-0008"
-title: "Rozwiąż konflikt merge"
+title: "Wywołaj i rozwiąż prawdziwy konflikt merge"
 module: "01-git"
 level: 2
 duration_minutes: 30
 requires: ["T-0007"]
-deliverable: "artefakt ćwiczeniowy"
+deliverable: "rozwiązany-konflikt"
 ---
 
-# T-0008 — Rozwiąż konflikt merge
-
-> Moduł: Git — bezpieczna praca ze zmianami · Poziom 2 · 30 min
+# T-0008 — Wywołaj i rozwiąż prawdziwy konflikt merge
 
 ## Misja
-
-Dwie gałęzie zmieniły ten sam fragment. Połącz intencje świadomie, nie wybierając strony automatycznie.
+Dwie gałęzie zmieniają tę samą linię w pliku Java. Wywołaj konflikt celowo, odczytaj znaczniki i uzgodnij poprawny rezultat.
 
 ## Cel nauki
+Rozumieć wspólny przodek, konflikt treści i bezpieczne rozwiązanie merge.
 
-Ćwicz znaczniki konfliktu i weryfikację po rozwiązaniu.
+## Materiały
+- [Materiały lekcji](materials/README.md)
+- [Git TaskBoard fixture](../../../fixtures/git-taskboard/)
+- Uzupełnij result.md.
+
+## Przygotowanie sandboxa
+Z katalogu głównego skopiuj fixture do /tmp/git-taskboard-lab. Zainicjalizuj tam main, dodaj pliki i utwórz commit bazowy. Nie ćwicz w swoim głównym repo.
 
 ## Zadania
-
-1. Zmień ten sam fragment na dwóch gałęziach
-2. Wywołaj merge i odczytaj konflikt
-3. Uzgodnij treść i usuń znaczniki
-4. Uruchom diff check
+1. Utwórz branch feature/task-label. Zmień aktywną linię return "Status: " + status; na wariant TASK z komentarza i zacommituj.
+2. Wróć do bazy i utwórz feature/current-label. Zmień dokładnie tę samą aktywną linię na wariant CURRENT. Zacommituj.
+3. Przełącz się na feature/task-label i scal feature/current-label.
+4. Przeczytaj znaczniki konfliktu, wybierz końcowy kontrakt i usuń znaczniki.
+5. Dodaj rozwiązanie do staging, obejrzyj diff i zakończ merge.
+6. Zapisz decyzję i historię w result.md.
 
 ## Kryteria zaliczenia
-
-- Nie ma znaczników konfliktu
-- Zachowano właściwy rezultat zmian
-- Wynik sprawdzono przed commitem
+- Konflikt został wywołany prawdziwym merge.
+- Wskazujesz wspólny commit bazowy i różne zmiany gałęzi.
+- Plik nie zawiera znaczników <<<<<<<, ======= ani >>>>>>>.
+- Historia i result.md potwierdzają rozwiązanie.
 
 ## Weryfikacja
+Uruchom git status, git diff --check i git log --oneline --graph --decorate.
 
-Wyszukaj znaczniki konfliktu i uruchom git diff --check
-
-## Podpowiedzi — otwieraj stopniowo
-
-1. **Mała wskazówka:** Przeczytaj obie zmiany z kontekstem
-2. **Kierunek:** Nie osłabiaj testów, by zamknąć konflikt
-3. **Gdy nadal utkniesz:** pokaż AI konkretny wynik z terminala; poproś o wyjaśnienie i jeden mały eksperyment, nie gotową odpowiedź.
+## Podpowiedzi
+1. **Mała wskazówka:** obie gałęzie muszą pochodzić z tego samego commita.
+2. **Kierunek:** obie zmiany zastępują tę samą aktywną linię.
+3. **Gdy utkniesz:** pokaż AI git status i fragment pliku ze znacznikami. Nie rób reset, zanim nie zapiszesz stanu.
 
 ## Raport po zadaniu
-
-Zapisz w prywatnym Obsidianie:
-- Co wykonałem samodzielnie?
-- Gdzie potrzebowałem pomocy?
-- Jaki błąd popełniłem i co było przyczyną?
-- Czy umiem odtworzyć rozwiązanie bez kopiowania?
-- Co powinienem powtórzyć?
+Zapisz, co wybrałeś, dlaczego i jak potwierdziłeś rozwiązanie.
 
 ## Porządkowanie
-
-Nie wykonuj force push
+Pracuj wyłącznie w kopii pod /tmp. Nie wykonuj force push ani eksperymentów na głównej gałęzi kursu.
