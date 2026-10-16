@@ -1,0 +1,26 @@
+name: Validate course
+on:
+  push:
+    paths:
+      - "course/**"
+      - "scripts/validate-course.py"
+      - ".github/workflows/validate-course.yml"
+  pull_request:
+    paths:
+      - "course/**"
+      - "scripts/validate-course.py"
+      - ".github/workflows/validate-course.yml"
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Validate quest structure
+        run: python scripts/validate-course.py
