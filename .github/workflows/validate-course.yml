@@ -4,11 +4,13 @@ on:
     paths:
       - "course/**"
       - "scripts/validate-course.py"
+      - "scripts/smoke-test-fixtures.sh"
       - ".github/workflows/validate-course.yml"
   pull_request:
     paths:
       - "course/**"
       - "scripts/validate-course.py"
+      - "scripts/smoke-test-fixtures.sh"
       - ".github/workflows/validate-course.yml"
 permissions:
   contents: read
@@ -22,5 +24,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Validate quest structure
+      - name: Validate quest metadata and materials
         run: python scripts/validate-course.py
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Smoke-test the REST fixture applications
+        run: bash scripts/smoke-test-fixtures.sh
