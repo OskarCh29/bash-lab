@@ -63,7 +63,7 @@ def main():
     # Check relative Markdown links in the course so referenced fixture files cannot silently go missing.
     for markdown in sorted((ROOT / "course").rglob("*.md")):
         text = markdown.read_text(encoding="utf-8")
-        for target in re.findall(r"(?<!!)\\[[^\\]]*\\]\\(([^)]+)\\)", text):
+        for target in re.findall(r"(?<!)\[[^\]]*\]\(([^)]+)\)", text):
             target = target.strip().split(" ", 1)[0]
             if not target or target.startswith(("#", "http://", "https://", "mailto:", "tel:", "data:")):
                 continue
