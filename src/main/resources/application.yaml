@@ -1,3 +1,50 @@
 spring:
   application:
     name: devops-lab
+
+dev:
+  responses:
+    active-profile: normal
+
+    profiles:
+      normal:
+        distribution:
+          200: 65
+          201: 8
+          204: 3
+          400: 4
+          401: 2
+          403: 2
+          404: 5
+          429: 3
+          500: 4
+          502: 2
+          503: 2
+
+      degraded:
+        distribution:
+          200: 45
+          201: 5
+          204: 2
+          400: 4
+          401: 2
+          403: 2
+          404: 5
+          429: 5
+          500: 12
+          502: 8
+          503: 10
+
+      overloaded:
+        distribution:
+          200: 30
+          201: 4
+          204: 1
+          400: 3
+          401: 2
+          403: 2
+          404: 4
+          429: 20
+          500: 12
+          502: 7
+          503: 15
