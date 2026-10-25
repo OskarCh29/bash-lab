@@ -22,7 +22,7 @@ public class TrafficController {
     }
 
     @GetMapping("/state")
-    public Mono<TrafficStatusResponse> getTrafficStatus(){
+    public Mono<TrafficStatusResponse> getTrafficStatus() {
         return Mono.empty();
     }
 

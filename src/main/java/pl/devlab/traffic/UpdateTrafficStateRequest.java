@@ -1,4 +1,3 @@
 package pl.devlab.traffic;
 
-public record UpdateTrafficStateRequest(TrafficState trafficState) {
-}
+public record UpdateTrafficStateRequest(TrafficState trafficState) {}
