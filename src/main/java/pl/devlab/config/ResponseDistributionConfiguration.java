@@ -1,7 +1,10 @@
 package pl.devlab.config;
 
-import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import pl.devlab.profile.ResponseDistributionProfile;
+
+import java.util.Locale;
+import java.util.Map;
 
 @ConfigurationProperties(prefix = "dev.responses")
 public record ResponseDistributionConfiguration(String activeProfile, Map<String, Profile> profiles) {
@@ -19,6 +22,11 @@ public record ResponseDistributionConfiguration(String activeProfile, Map<String
         }
         if (activeProfile == null || !profiles.containsKey(activeProfile)) {
             throw new IllegalArgumentException("Unknown active profile: " + activeProfile);
+        }
+        try {
+            ResponseDistributionProfile.valueOf(activeProfile.toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException("Unknown active profile: " + activeProfile, exception);
         }
 
         profiles.forEach((name, profile) -> {
