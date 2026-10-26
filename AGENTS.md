@@ -166,6 +166,8 @@ Common starting points (verify against the project configuration first):
 - Quarkus: use the Maven wrapper and commands documented by the project.
 - Shell: syntax-check the changed script with its declared interpreter.
 
+After every code change in this repository, run `./mvnw spotless:apply` (on Windows, `mvnw.cmd spotless:apply`) before reviewing the final diff. If the wrapper cannot run, report that formatting could not be applied.
+
 After implementation:
 
 1. Review the complete diff, including configuration, tests, and generated files.

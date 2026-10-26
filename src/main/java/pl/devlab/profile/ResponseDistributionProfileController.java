@@ -15,9 +15,7 @@ public class ResponseDistributionProfileController {
     private final ResponseDistributionProfileService profileService;
 
     @GetMapping("/{profile}/distribution")
-    public Mono<ResponseDistributionResponse> getDistribution(
-            @PathVariable String profile
-    ) {
+    public Mono<ResponseDistributionResponse> getDistribution(@PathVariable String profile) {
         return profileService.getDistributionDetails(profile);
     }
 

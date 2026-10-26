@@ -1,14 +1,12 @@
 package pl.devlab.profile;
 
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import pl.devlab.config.ResponseDistributionConfiguration;
-
 import reactor.core.publisher.Mono;
-import java.util.Locale;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -18,41 +16,31 @@ public class ResponseDistributionProfileService {
 
     public Mono<ResponseDistributionResponse> getActiveDistribution() {
         return Mono.fromCallable(() -> {
-            ResponseDistributionProfile activeProfile = getActiveProfile();
-
+            String activeProfile = config.activeProfile();
             Map<Integer, Integer> distribution = getResponseDistributionByProfile(activeProfile);
-
-            return new ResponseDistributionResponse(activeProfile, distribution);
+            return new ResponseDistributionResponse(activeProfile, true, distribution);
         });
     }
 
     public Mono<ResponseDistributionResponse> getDistributionDetails(String profileName) {
         return Mono.fromCallable(() -> {
-            ResponseDistributionProfile profile = ResponseDistributionProfile.valueOf(
-                    profileName.toUpperCase(Locale.ROOT));
-            Map<Integer, Integer> distribution = getResponseDistributionByProfile(profile);
+                    Map<Integer, Integer> distribution = getResponseDistributionByProfile(profileName);
 
-            return new ResponseDistributionResponse(profile,
-                    profile == getActiveProfile(),
-                    distribution);
-        }).onErrorMap(IllegalArgumentException.class,
-                error -> new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                        "Unknown profile: " + profileName, error));
+                    return new ResponseDistributionResponse(
+                            profileName, profileName.equals(config.activeProfile()), distribution);
+                })
+                .onErrorMap(
+                        IllegalArgumentException.class,
+                        error -> new ResponseStatusException(
+                                HttpStatus.BAD_REQUEST, "Unknown profile: " + profileName, error));
     }
 
-    public Map<Integer, Integer> getResponseDistributionByProfile(ResponseDistributionProfile profile) {
-        var profileConfiguration = config.profiles().get(profile.name().toLowerCase(Locale.ROOT));
+    public Map<Integer, Integer> getResponseDistributionByProfile(String profileName) {
+        var profileConfiguration = config.profiles().get(profileName);
 
         if (profileConfiguration == null) {
-            throw new IllegalArgumentException(
-                    "Profile is not configured: " + profile
-            );
+            throw new IllegalArgumentException("Profile is not configured: " + profileName);
         }
         return profileConfiguration.distribution();
     }
-
-    private ResponseDistributionProfile getActiveProfile() {
-        return ResponseDistributionProfile.valueOf(config.activeProfile().toUpperCase(Locale.ROOT));
-    }
-
 }
