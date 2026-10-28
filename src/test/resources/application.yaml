@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: devops-lab
+
+dev:
+  responses:
+    active-profile: normal
+
+    profiles:
+      normal:
+        distribution:
+          200: 50
+          400: 25
+          403: 5
+          404: 5
+          429: 5
+          500: 5
+          502: 5
