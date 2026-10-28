@@ -56,7 +56,7 @@
             <artifactId>r2dbc-pool</artifactId>
             <scope>runtime</scope>
         </dependency>
-<!-- TEST -->
+        <!-- TEST -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -116,6 +116,7 @@
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>3.10.4</version>
                 <configuration>
+                    <lineEndings>UNIX</lineEndings>
                     <formats>
                         <format>
                             <includes>
